@@ -1,6 +1,6 @@
 package com.github.subhojitbasak.MovieTicketBookingApplication.Controller;
 
-import com.github.subhojitbasak.MovieTicketBookingApplication.Service.MovieTicketBookingService;
+import com.github.subhojitbasak.MovieTicketBookingApplication.Service.MovieTicketBookingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 //@RequestMapping("/api/vi/cache")
 public class CacheController {
     @Autowired
-    private MovieTicketBookingService service;
+    private MovieTicketBookingServiceImpl service;
 
-    public CacheController(MovieTicketBookingService service) {
+    public CacheController(MovieTicketBookingServiceImpl service) {
         this.service = service;
     }
 
