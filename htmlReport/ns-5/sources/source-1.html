@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > LFUCache</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.github.subhojitbasak.MovieTicketBookingApplication.cache</a>
+</div>
+
+<h1>Coverage Summary for Class: LFUCache (com.github.subhojitbasak.MovieTicketBookingApplication.cache)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LFUCache</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    26.7%
+  </span>
+  <span class="absValue">
+    (4/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.github.subhojitbasak.MovieTicketBookingApplication.cache;
+&nbsp;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;public class LFUCache &lt;K, V&gt; {
+&nbsp;    private final int capacity;
+&nbsp;    private Map&lt;K, V&gt; cache;
+&nbsp;    private Map&lt;K, Integer&gt; usageCount;
+&nbsp;
+<b class="fc">&nbsp;    public LFUCache(int capacity) {</b>
+<b class="fc">&nbsp;        this.capacity = capacity;</b>
+<b class="fc">&nbsp;        this.cache = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        this.usageCount = new HashMap&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public V get(K key) {
+<b class="nc">&nbsp;        if (cache.containsKey(key)) {</b>
+<b class="nc">&nbsp;            usageCount.put(key, usageCount.getOrDefault(key, 0) + 1);</b>
+<b class="nc">&nbsp;            return cache.get(key);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void put(K key, V value) {
+<b class="nc">&nbsp;        if (cache.size() &gt;= capacity) {</b>
+<b class="nc">&nbsp;            K lfuKey = getLFUKey();</b>
+<b class="nc">&nbsp;            cache.remove(lfuKey);</b>
+<b class="nc">&nbsp;            usageCount.remove(lfuKey);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        cache.put(key, value);</b>
+<b class="nc">&nbsp;        usageCount.put(key, 1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private K getLFUKey() {
+<b class="nc">&nbsp;        return Collections.min(usageCount.entrySet(), Map.Entry.comparingByValue()).getKey();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-09-11 02:26</div>
+</div>
+</body>
+</html>

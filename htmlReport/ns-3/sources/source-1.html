@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > CacheController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.github.subhojitbasak.MovieTicketBookingApplication.Controller</a>
+</div>
+
+<h1>Coverage Summary for Class: CacheController (com.github.subhojitbasak.MovieTicketBookingApplication.Controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CacheController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (2/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.github.subhojitbasak.MovieTicketBookingApplication.Controller;
+&nbsp;
+&nbsp;import com.github.subhojitbasak.MovieTicketBookingApplication.Service.MovieTicketBookingService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;@RestController
+&nbsp;//@RequestMapping(&quot;/api/vi/cache&quot;)
+&nbsp;public class CacheController {
+&nbsp;    @Autowired
+&nbsp;    private MovieTicketBookingService service;
+&nbsp;
+<b class="fc">&nbsp;    public CacheController(MovieTicketBookingService service) {</b>
+<b class="fc">&nbsp;        this.service = service;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // LRU Cache for User Sessions
+&nbsp;    @PostMapping(&quot;/user/session&quot;)
+&nbsp;    public String addUserSession(@RequestParam String userId, @RequestParam String session) {
+<b class="nc">&nbsp;        service.putUserSession(userId, session);</b>
+<b class="nc">&nbsp;        return &quot;User session added for user: &quot; + userId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/user/session&quot;)
+&nbsp;    public String getUserSession(@RequestParam String userId) {
+<b class="nc">&nbsp;        String session = service.getUserSession(userId);</b>
+<b class="nc">&nbsp;        if (session != null) {</b>
+<b class="nc">&nbsp;            return &quot;Session for user &quot; + userId + &quot;: &quot; + session;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return &quot;Session not found for user: &quot; + userId;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // MRU Cache for Movie Trailers
+&nbsp;    @PostMapping(&quot;/movie/trailer&quot;)
+&nbsp;    public String addMovieTrailer(@RequestParam String movieId, @RequestParam String trailer) {
+<b class="nc">&nbsp;        service.putMovieTrailer(movieId, trailer);</b>
+<b class="nc">&nbsp;        return &quot;Trailer added for movie: &quot; + movieId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/movie/trailer&quot;)
+&nbsp;    public String getMovieTrailer(@RequestParam String movieId) {
+<b class="nc">&nbsp;        String trailer = service.getMovieTrailer(movieId);</b>
+<b class="nc">&nbsp;        if (trailer != null) {</b>
+<b class="nc">&nbsp;            return &quot;Trailer for movie &quot; + movieId + &quot;: &quot; + trailer;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return &quot;Trailer not found for movie: &quot; + movieId;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // LFU Cache for Movie Showtimes
+&nbsp;    @PostMapping(&quot;/movie/showtime&quot;)
+&nbsp;    public String addMovieShowtime(@RequestParam String showtimeId, @RequestParam String showtime) {
+<b class="nc">&nbsp;        service.putMovieShowtime(showtimeId, showtime);</b>
+<b class="nc">&nbsp;        return &quot;Showtime added for showtime ID: &quot; + showtimeId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/movie/showtime&quot;)
+&nbsp;    public String getMovieShowtime(@RequestParam String showtimeId) {
+<b class="nc">&nbsp;        String showtime = service.getMovieShowtime(showtimeId);</b>
+<b class="nc">&nbsp;        if (showtime != null) {</b>
+<b class="nc">&nbsp;            return &quot;Showtime for showtime ID &quot; + showtimeId + &quot;: &quot; + showtime;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return &quot;Showtime not found for showtime ID: &quot; + showtimeId;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-09-11 02:26</div>
+</div>
+</body>
+</html>
