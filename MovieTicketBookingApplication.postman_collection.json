@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "8af18daf-fa4f-4522-b496-7697d69697c0",
+		"name": "MovieTicketBookingApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23314880",
+		"_collection_link": "https://crimson-shuttle-319706.postman.co/workspace/marketing_api_testing~eacbe7c1-b0b5-410f-9f1c-74e268113bab/collection/23314880-8af18daf-fa4f-4522-b496-7697d69697c0?action=share&source=collection_link&creator=23314880"
+	},
+	"item": [
+		{
+			"name": "Using LRU Cache Create User Session",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/session?userId=123&session=abc123",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"session"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "123"
+						},
+						{
+							"key": "session",
+							"value": "abc123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch session by UserId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/session?userId=123",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"session"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MRU Cache for Movie Trailers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movie/trailer?movieId=789&trailer=awesome_trailer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"trailer"
+					],
+					"query": [
+						{
+							"key": "movieId",
+							"value": "789"
+						},
+						{
+							"key": "trailer",
+							"value": "awesome_trailer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Movie by movieId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movie/trailer?movieId=789",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"trailer"
+					],
+					"query": [
+						{
+							"key": "movieId",
+							"value": "789"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LFU Cache for Adding Showtime",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movie/showtime?showtimeId=123456&showtime=23456",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"showtime"
+					],
+					"query": [
+						{
+							"key": "showtimeId",
+							"value": "123456"
+						},
+						{
+							"key": "showtime",
+							"value": "23456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Showtime by showtimeid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movie/showtime?showtimeId=123456",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"showtime"
+					],
+					"query": [
+						{
+							"key": "showtimeId",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
